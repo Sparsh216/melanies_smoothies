@@ -28,7 +28,8 @@ if ing_lis:
     ing_string = ''
     for fruit_chosen in ing_lis:
         ing_string += fruit_chosen+ ' '
-        smoothiefroot_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        st.subheader(fruit_chosen + 'Nutrition Information')
+        smoothiefroot_response = requests.get("https://fruityvice.com/api/fruit/"+fruit_chosen)
         sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients,name_on_order)
             values ('""" + ing_string + """', '""" + name_on_order + """')"""
